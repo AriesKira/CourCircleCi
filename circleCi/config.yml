@@ -1,0 +1,30 @@
+version: 2.1
+
+orbs:
+  android: circleci/android@2.4.0
+
+jobs:
+  build-and-upload:
+    executor:
+      name: android/android-machine
+      resource-class: large
+      tag: default
+    environment:
+      release_notes: "Test config CircleCi"
+      notify: true
+    steps:
+      # Checkout the code as the first step.
+      - checkout
+      # And next run the debug build
+      - run:
+          name: Install OpenJDK 17
+          command: |
+            sudo apt-get update && sudo apt-get install openjdk-17-jdk
+            sudo update-alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
+            sudo update-alternatives --set javac /usr/lib/jvm/java-17-openjdk-amd64/bin/javac
+            java -version
+
+workflows:
+  test-workflow:
+    jobs:
+      - build-and-upload
