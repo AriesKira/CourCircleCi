@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="todo_cell_title_texte">Title</string>
+    <string name="todo_cell_date_texte">17/05/2024</string>
+</resources>
