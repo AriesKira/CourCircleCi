@@ -4,18 +4,13 @@ orbs:
   android: circleci/android@2.4.0
 
 jobs:
-  build-and-upload:
+  build-and-test:
     executor:
       name: android/android-machine
-      resource-class: large
       tag: default
-    environment:
-      release_notes: "Test config CircleCi"
-      notify: true
+
     steps:
-      # Checkout the code as the first step.
       - checkout
-      # And next run the debug build
       - run:
           name: Install OpenJDK 17
           command: |
@@ -23,8 +18,25 @@ jobs:
             sudo update-alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
             sudo update-alternatives --set javac /usr/lib/jvm/java-17-openjdk-amd64/bin/javac
             java -version
+      - android/run-tests:
+          test-command: ./gradlew lint testDebug --continue
+      - run:
+          name: Assemble debug build
+          command: ./gradlew assembleDebug
+      - android/start-emulator-and-run-tests:
+          test-command: ./gradlew connectedDebugAndroidTest
+          system-image: system-images;android-30;google_apis;x86
 
+      # And finally run the release build
+      - run:
+          name: Assemble release build
+          command: |
+            ./gradlew assembleRelease
+
+# Orchestrate jobs using workflows
+# See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
 workflows:
-  test-workflow:
+  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
+    # Inside the workflow, you define the jobs you want to run.
     jobs:
-      - build-and-upload
+      - build-and-test
