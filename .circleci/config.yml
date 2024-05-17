@@ -14,16 +14,10 @@ jobs:
       - run:
           name: Install OpenJDK 17
           command: |
-            sudo apt-get update && sudo apt-get install -y openjdk-17-jdk
+            sudo apt-get update && sudo apt-get install openjdk-17-jdk
             sudo update-alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
             sudo update-alternatives --set javac /usr/lib/jvm/java-17-openjdk-amd64/bin/javac
             java -version
-      - run:
-          name: Clean Gradle Cache
-          command: rm -rf ~/.gradle/caches/
-      - run:
-          name: Use Gradle Wrapper
-          command: ./gradlew --version
       - android/run-tests:
           test-command: ./gradlew lint testDebug --continue
       - run:
@@ -36,9 +30,13 @@ jobs:
       # And finally run the release build
       - run:
           name: Assemble release build
-          command: ./gradlew assembleRelease
+          command: |
+            ./gradlew assembleRelease
 
+# Orchestrate jobs using workflows
+# See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
 workflows:
   sample: # This is the name of the workflow, feel free to change it to better match your workflow.
+    # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build-and-test
