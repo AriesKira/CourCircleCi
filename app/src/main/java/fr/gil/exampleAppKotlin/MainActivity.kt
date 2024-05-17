@@ -49,7 +49,7 @@ fun verifyPassword(motDePasse: String): List<String> {
     val erreurs = mutableListOf<String>()
 
     // Vérifier la longueur minimale
-    if (motDePasse.length > 6) {
+    if (motDePasse.length < 6) {
         erreurs.add("Le mot de passe doit contenir au moins 6 caractères.")
     }
 
