@@ -24,12 +24,19 @@ platform :android do
 
   desc "Submit a new Beta Build to Crashlytics Beta"
   lane :beta do
-    gradle(task: "clean assembleRelease")
-    crashlytics
 
-    # sh "your_script.sh"
-    # You can also use other beta testing services here
-  end
+      increment_version_code #[Optional] fastlane add_plugin increment_version_code
+
+      gradle(task: "clean assembleRelease") #or clean assembleDebug
+
+      upload_to_testappio(
+        release_notes: "My release notes here...",
+        git_release_notes: true,
+        git_commit_id: false,
+        notify: true
+      )
+
+    end
 
   desc "Deploy a new version to the Google Play"
   lane :deploy do
