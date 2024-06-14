@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
+    <color name="black_details_bg">#0B0707</color>
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#FF808080</color>
     <color name="orange">#FF7F00</color>
     <color name="todo_cell_cb">#FCECAB</color>
     <color name="todo_date_color">#CD7E5D</color>
+    <color name="yellow_text">#DFD2A6</color>
+    <color name="todo_details_bg">#424142</color>
 </resources>

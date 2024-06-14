@@ -1,7 +1,9 @@
 package fr.gil.exampleAppKotlin
 
 import junit.framework.TestCase.assertTrue
+import org.junit.ClassRule
 import org.junit.Test
+
 
 class MainActivityKtTest {
     @Test
@@ -9,7 +11,7 @@ class MainActivityKtTest {
         //setup
         val password = "Wowodzdzadad23&="
         //test
-        val errors = verifyPassword(password)
+        val errors = _root_ide_package_.fr.gil.exampleAppKotlin.views.verifyPassword(password)
         //result
         assertTrue(errors.isEmpty())
     }

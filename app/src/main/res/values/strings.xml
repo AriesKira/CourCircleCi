@@ -2,4 +2,5 @@
     <string name="app_name">My Application</string>
     <string name="todo_cell_title_texte">Title</string>
     <string name="todo_cell_date_texte">17/05/2024</string>
+    <string name="lorem_ipsum_example">Lorem ipsum dolor sit amet, consectetur adipiscing elite. Nulla nec odio. Lorem Ipsum is simply dummy text of the printing and typesetting industry. heets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
 </resources>

@@ -1,15 +1,16 @@
-package fr.gil.exampleAppKotlin
+package fr.gil.exampleAppKotlin.views.components
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import java.lang.reflect.InvocationHandler
+import fr.gil.exampleAppKotlin.R
+import fr.gil.exampleAppKotlin.TodoModel
+import fr.gil.exampleAppKotlin.views.TodoClickListener
 
-class TodoListAdapter(private val todoList: ArrayList<TodoModel>,private val todoClickHandler: TodoClickListener): RecyclerView.Adapter<TodoListAdapter.TodoViewHolder>() {
+class TodoListAdapter(private val todoList: List<TodoModel>, private val todoClickHandler: TodoClickListener): RecyclerView.Adapter<TodoListAdapter.TodoViewHolder>() {
 
 
 

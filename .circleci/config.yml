@@ -32,6 +32,9 @@ jobs:
           name: Assemble release build
           command: |
             ./gradlew assembleRelease
+            
+      - run: bundle install
+      - run: bundle exec fastlane android beta --verbose
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
