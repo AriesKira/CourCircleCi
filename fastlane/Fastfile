@@ -25,9 +25,8 @@ platform :android do
   desc "Submit a new Beta Build to Crashlytics Beta"
   lane :beta do
 
-      increment_version_code #[Optional] fastlane add_plugin increment_version_code
+      increment_version_code
 
-      gradle(task: "clean assembleRelease") #or clean assembleDebug
 
       upload_to_testappio(
         release_notes: "My release notes here...",
