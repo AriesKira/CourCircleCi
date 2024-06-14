@@ -29,6 +29,8 @@ platform :android do
 
 
       upload_to_testappio(
+        api_token: "22701a95-b27a-4ed4-ae4d-3b41a44b38e6",
+        app_id: "KyEeRajYOl",
         release_notes: "My release notes here...",
         git_release_notes: true,
         git_commit_id: false,
